@@ -11,7 +11,9 @@ class ActionsProvider extends ServiceProvider {
 		$this->app->singleton(ActionQueueContract::class, ActionQueue::class);
 		$this->app->instance('config.queue_hook', 'wp_print_styles');
 		$this->app->instance('config.queue_run_priority', PHP_INT_MAX);
-		$this->app->singleton('config.queue_priority', fn () => $this->app->make('config.queue_run_priority') - 1);
+		$this->app->singleton('config.queue_priority', function () {
+			return $this->app->make('config.queue_run_priority') - 1;
+		});
 	}
 
 	public function boot(ActionQueueContract $actionQueue) {
@@ -24,6 +26,8 @@ class ActionsProvider extends ServiceProvider {
 		// using wp_print_styles and wp_print_scripts hooks.
 		$hook = $this->app->make('config.queue_hook');
 		$priority = $this->app->make('config.queue_run_priority');
-		add_action($hook, fn () => $actionQueue->handle(), $priority);
+		add_action($hook, function () use ($actionQueue) {
+			return $actionQueue->handle();
+		}, $priority);
 	}
 }

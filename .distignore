@@ -1,5 +1,7 @@
 tests
 yarn.lock
+.idea
+.github
 .editorconfig
 .git
 .yarn
@@ -15,6 +17,7 @@ package.json
 phpunit-7.0.phar
 .distignore
 phpunit.xml.dist
+rector.php
 src
 rollup.config.js
 dist/index.html

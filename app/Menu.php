@@ -5,7 +5,10 @@ namespace CWS\Encute;
 use CWS\Encute\Tekta\Contracts\PluginData;
 
 class Menu {
-	protected Plugin $plugin;
+	/**
+	 * @var \CWS\Encute\Plugin
+	 */
+	protected $plugin;
 
 	public function __construct(Plugin $plugin) {
 		$this->plugin = $plugin;

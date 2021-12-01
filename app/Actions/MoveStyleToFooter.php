@@ -8,7 +8,9 @@ class MoveStyleToFooter extends Action {
 			if (wp_style_is($handle, 'registered')) {
 				$style = $wpStyles->registered[$handle];
 				wp_deregister_style($handle);
-				add_action('wp_head', fn() => $wpStyles->registered[$handle] = $style, PHP_INT_MAX);
+				add_action('wp_head', function () use ($wpStyles, $handle) {
+					return $wpStyles->registered[$handle] = $style;
+				}, PHP_INT_MAX);
 			}
 		}
 	}

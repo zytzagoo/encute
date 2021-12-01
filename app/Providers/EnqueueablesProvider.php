@@ -6,7 +6,11 @@ use CWS\Encute\Illuminate\Support\ServiceProvider;
 
 class EnqueueablesProvider extends ServiceProvider {
 	public function register() {
-		$this->app->singleton(\WP_Scripts::class, fn () => wp_scripts());
-		$this->app->singleton(\WP_Styles::class, fn () => wp_styles());
+		$this->app->singleton(\WP_Scripts::class, function () {
+			return wp_scripts();
+		});
+		$this->app->singleton(\WP_Styles::class, function () {
+			return wp_styles();
+		});
 	}
 }

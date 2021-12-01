@@ -7,7 +7,7 @@
  * Plugin URI:
  * Author URI:
  * Requires at least: 5.8
- * Requires PHP: 7.4
+ * Requires PHP: 7.3
  * Text Domain: encute
  * Domain Path: /languages
  * License: GPLv2 or later
@@ -50,8 +50,8 @@ Copyright (c) Taylor Otwell
 */
 
 // Immediately trigger an error for super-old PHP versions.
-if (version_compare(phpversion(), '5.6', '<')) {
-	trigger_error("This plugin requires PHP 7.4 or higher", E_USER_ERROR);
+if (PHP_VERSION_ID < 50600) {
+	trigger_error("This plugin requires PHP 7.3 or higher", E_USER_ERROR);
 } else {
 	require __DIR__ . '/load.php';
 }

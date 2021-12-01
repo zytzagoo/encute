@@ -13,8 +13,12 @@
     "clean-dist": "git clean -f dist",
     "composer:production": "composer install --no-dev --no-scripts",
     "make-zip": "wp dist-archive . encute.zip",
+		"make-zip-php73": "wp dist-archive . encute-php73.zip",
     "package:prep": "yarn run clean-dist && yarn run build:production && yarn run composer:production",
-    "package": "yarn run package:prep && yarn run make-zip && composer install"
+		"package:prep73": "yarn run clean-dist && yarn run build:production && yarn run composer:production",
+    "package": "yarn run package:prep && yarn run make-zip && composer install",
+		"package:php73": "yarn package:prep73&& yarn run make-zip-php73 && composer install",
+		"rectify": "composer install && vendor/bin/rector process app"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.0.0",

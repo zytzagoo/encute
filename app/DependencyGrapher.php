@@ -3,7 +3,10 @@
 namespace CWS\Encute;
 
 class DependencyGrapher {
-	protected \WP_Dependencies $dependencies;
+	/**
+	 * @var \WP_Dependencies
+	 */
+	protected $dependencies;
 
 	public function __construct(\WP_Dependencies $dependencies) {
 		$this->dependencies = $dependencies;
@@ -51,7 +54,9 @@ class DependencyGrapher {
 			return $dependency->deps && in_array($handle, $dependency->deps);
 		});
 
-		return array_values(array_map(fn ($child) => $child->handle, $children));
+		return array_values(array_map(function ($child) {
+			return $child->handle;
+		}, $children));
 	}
 
 	public function parentNodes(string $handle): array {
@@ -59,9 +64,8 @@ class DependencyGrapher {
 	}
 
 	public function adjacentNodes(string $handle): array {
-		return array_values(array_unique([
-			...$this->parentNodes($handle),
-			...$this->childNodes($handle),
-		]));
+		$item0Unpacked = $this->parentNodes($handle);
+		$item1Unpacked = $this->childNodes($handle);
+		return array_values(array_unique(array_merge($item0Unpacked, $item1Unpacked)));
 	}
 }

@@ -13,7 +13,7 @@ if (!class_exists(Tekta\RequirementsCheck::class)) {
 if (Tekta\RequirementsCheck::passes(
 	__DIR__ . '/index.php',
 	"Encute",
-	"7.4",
+	"7.3",
 	"5.8"
 )) {
 	\add_action("plugins_loaded", [Plugin::class, 'load']);

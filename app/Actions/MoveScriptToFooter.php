@@ -8,7 +8,9 @@ class MoveScriptToFooter extends Action {
 			if (wp_script_is($handle, 'registered')) {
 				$script = $wpScripts->registered[$handle];
 				wp_deregister_script($handle);
-				add_action('wp_head', fn() => $wpScripts->registered[$handle] = $script, PHP_INT_MAX);
+				add_action('wp_head', function () use ($wpScripts, $handle, $script) {
+					return $wpScripts->registered[$handle] = $script;
+				}, PHP_INT_MAX);
 			}
 		}
 	}

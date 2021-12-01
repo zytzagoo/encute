@@ -3,8 +3,14 @@
 namespace CWS\Encute;
 
 class Admin {
-	protected Menu $menu;
-	protected AdminAssets $assets;
+	/**
+	 * @var \CWS\Encute\Menu
+	 */
+	protected $menu;
+	/**
+	 * @var \CWS\Encute\AdminAssets
+	 */
+	protected $assets;
 	protected $hideUi = false;
 
 	public function __construct(Menu $menu, AdminAssets $assets) {

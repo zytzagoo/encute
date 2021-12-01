@@ -5,7 +5,10 @@ namespace CWS\Encute;
 use CWS\Encute\Contracts\Enqueueable;
 
 abstract class Enqueue implements Enqueueable {
-	protected array $handles = [];
+	/**
+	 * @var mixed[]
+	 */
+	protected $handles = [];
 
 	public function __construct($handles = []) {
 		if (is_string($handles)) {

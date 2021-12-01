@@ -6,7 +6,10 @@ use CWS\Encute\Illuminate\Support\Collection;
 use CWS\Encute\Contracts\Actionable;
 
 class ActionQueue implements Contracts\ActionQueue {
-	protected Collection $actions;
+	/**
+	 * @var \CWS\Encute\Illuminate\Support\Collection
+	 */
+	protected $actions;
 
 	public function __construct() {
 		$this->actions = new Collection();

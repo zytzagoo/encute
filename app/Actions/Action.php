@@ -8,7 +8,10 @@ use CWS\Encute\Contracts\Enqueueable;
 use CWS\Encute\Contracts\ActionQueue;
 
 abstract class Action implements Actionable {
-	protected Enqueueable $asset;
+	/**
+	 * @var \CWS\Encute\Contracts\Enqueueable
+	 */
+	protected $asset;
 
 	public function __construct(Enqueueable $asset) {
 		$this->asset= $asset;

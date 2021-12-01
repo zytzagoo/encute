@@ -5,8 +5,14 @@ namespace CWS\Encute;
 use CWS\Encute\Tekta\Contracts\PluginData;
 
 class AdminAssets {
-	protected Plugin $plugin;
-	protected PluginData $data;
+	/**
+	 * @var \CWS\Encute\Plugin
+	 */
+	protected $plugin;
+	/**
+	 * @var \CWS\Encute\Tekta\Contracts\PluginData
+	 */
+	protected $data;
 
 	public function __construct(Plugin $plugin, PluginData $data) {
 		$this->plugin = $plugin;
